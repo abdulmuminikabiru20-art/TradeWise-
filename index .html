@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head><link rel="manifest" href="manifest.json">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+
+<title>TradeWise</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #080d18;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #101827;
+  padding: 22px;
+  border-bottom: 1px solid #263247;
+}
+
+header h1 {
+  color: #36e0a1;
+  margin: 0;
+  font-size: 30px;
+}
+
+header p {
+  color: #9caec5;
+  margin-bottom: 0;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+  padding: 18px;
+}
+
+.card {
+  background: #121c2d;
+  border: 1px solid #26364d;
+  border-radius: 15px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  font-size: 19px;
+  margin-top: 0;
+}
+
+.card p {
+  color: #a9b8cc;
+  line-height: 1.6;
+}
+
+.green {
+  color: #36e0a1;
+}
+
+.button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #36e0a1;
+  color: #07130e;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0 15px;
+  border: 1px solid #26364d;
+  border-radius: 8px;
+  background: #080d18;
+  color: white;
+  font-size: 15px;
+}
+
+label {
+  color: #a9b8cc;
+  font-size: 14px;
+}
+
+.result {
+  background: #080d18;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px;
+  background: #101827;
+}
+
+.nav button {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border: 1px solid #26364d;
+  border-radius: 8px;
+  background: #121c2d;
+  color: white;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.lesson {
+  padding: 12px;
+  background: #080d18;
+  border-radius: 9px;
+  margin: 10px 0;
+}
+
+.trade {
+  border-bottom: 1px solid #26364d;
+  padding: 12px 0;
+}
+
+footer {
+  text-align: center;
+  color: #718096;
+  padding: 25px;
+}
+</style>
+</head>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .then(() => console.log("TradeWise Service Worker Ready"))
+      .catch((error) => console.log("Service Worker Error:", error));
+  });
+}
+</script><body>
+
+<header>
+  <h1>TradeWise</h1>
+  <p>Learn. Analyze. Improve.</p>
+</header>
+
+<nav class="nav">
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('academy')">Academy</button>
+  <button onclick="showSection('analysis')">Analysis</button>
+  <button onclick="showSection('calculator')">Calculator</button>
+  <button onclick="showSection('journal')">Journal</button>
+</nav>
+
+<main class="container">
+
+<!-- HOME -->
+<section id="home" class="section active">
+
+  <div class="card">
+    <h2>Welcome Trader 👋</h2>
+    <p>Your journey to becoming a better trader starts here.</p>
+    <p class="green">Learn trading. Manage risk. Improve your skills.</p>
+  </div>
+
+  <div class="card">
+    <h2>📚 Trading Academy</h2>
+    <p>Build your trading knowledge step by step.</p>
+    <button class="button" onclick="showSection('academy')">
+      Start Learning
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>📊 Market Analysis</h2>
+    <p>Study market structure and price movements.</p>
+    <button class="button" onclick="showSection('analysis')">
+      Explore Analysis
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>🧮 Risk Calculator</h2>
+    <p>Understand your potential risk before a trade.</p>
+    <button class="button" onclick="showSection('calculator')">
+      Open Calculator
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>📝 Trading Journal</h2>
+    <p>Record and review your trading history.</p>
+    <button class="button" onclick="showSection('journal')">
+      Open Journal
+    </button>
+  </div>
+
+</section>
+
+<!-- ACADEMY -->
+<section id="academy" class="section">
+
+  <div class="card">
+    <h2>📚 Trading Academy</h2>
+    <p>Learn important trading concepts.</p>
+
+    <div class="lesson">
+      <h3>1. Market Structure</h3>
+      <p>Understand Higher Highs (HH), Higher Lows (HL), Lower Highs (LH) and Lower Lows (LL).</p>
+    </div>
+
+    <div class="lesson">
+      <h3>2. Break of Structure (BOS)</h3>
+      <p>BOS occurs when price breaks an important previous swing level, potentially showing trend continuation.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>3. Change of Character (CHoCH)</h3>
+      <p>CHoCH is a possible early signal that market structure is changing direction.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>4. Liquidity</h3>
+      <p>Learn about buy-side liquidity and sell-side liquidity around important price levels.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>5. Order Blocks</h3>
+      <p>Study price areas traders use to identify possible institutional activity.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ANALYSIS -->
+<section id="analysis" class="section">
+
+  <div class="card">
+    <h2>📊 Market Analysis</h2>
+    <p>Use this checklist when studying a chart.</p>
+
+    <label>Market / Instrument</label>
+    <input id="market" placeholder="Example: BTCUSDT">
+
+    <label>Timeframe</label>
+    <select id="timeframe">
+      <option>1 Minute</option>
+      <option>5 Minutes</option>
+      <option>15 Minutes</option>
+      <option>1 Hour</option>
+      <option>4 Hours</option>
+      <option>Daily</option>
+    </select>
+
+    <label>Market Direction</label>
+    <select id="direction">
+      <option>Bullish</option>
+      <option>Bearish</option>
+      <option>Sideways</option>
+    </select>
+
+    <label>Analysis Notes</label>
+    <textarea id="analysisNotes" rows="4" placeholder="Write your market observations..."></textarea>
+
+    <button class="button" onclick="saveAnalysis()">
+      Save Analysis
+    </button>
+
+    <div class="result" id="analysisResult">
+      Your analysis will appear here.
+    </div>
+  </div>
+
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator" class="section">
+
+  <div class="card">
+    <h2>🧮 Risk Calculator</h2>
+    <p>Calculate your theoretical risk and position size.</p>
+
+    <label>Account Balance ($)</label>
+    <input type="number" id="balance" placeholder="Example: 100">
+
+    <label>Risk Percentage (%)</label>
+    <input type="number" id="risk" placeholder="Example: 1">
+
+    <label>Stop Loss Distance (Points)</label>
+    <input type="number" id="stop" placeholder="Example: 50">
+
+    <label>Value per Point per Lot ($)</label>
+    <input type="number" id="value" placeholder="Example: 1">
+
+    <button class="button" onclick="calculateRisk()">
+      Calculate Risk
+    </button>
+
+    <div class="result" id="result">
+      Your calculation will appear here.
+    </div>
+  </div>
+
+</section>
+
+<!-- JOURNAL -->
+<section id="journal" class="section">
+
+  <div class="card">
+    <h2>📝 Trading Journal</h2>
+    <p>Record your practice trades and review your decisions.</p>
+
+    <label>Market</label>
+    <input id="tradeMarket" placeholder="Example: BTCUSDT">
+
+    <label>Trade Direction</label>
+    <select id="tradeDirection">
+      <option>Buy</option>
+      <option>Sell</option>
+    </select>
+
+    <label>Entry Price</label>
+    <input type="number" id="entry" placeholder="Entry price">
+
+    <label>Exit Price</label>
+    <input type="number" id="exit" placeholder="Exit price">
+
+    <label>Trade Notes</label>
+    <textarea id="tradeNotes" rows="3" placeholder="Why did you take this trade?"></textarea>
+
+    <button class="button" onclick="saveTrade()">
+      Save Trade
+    </button>
+
+    <div class="result" id="journalResult">
+      No trades recorded yet.
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  TradeWise © 2026
+  <p>Learn. Analyze. Improve.</p>
+</footer>
+
+<script>
+
+function showSection(name) {
+  document.querySelectorAll('.section').forEach(section => {
+    section.classList.remove('active');
+  });
+
+  document.getElementById(name).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function calculateRisk() {
+
+  const balance = Number(document.getElementById("balance").value);
+  const risk = Number(document.getElementById("risk").value);
+  const stop = Number(document.getElementById("stop").value);
+  const value = Number(document.getElementById("value").value);
+
+  const result = document.getElementById("result");
+
+  if (
+    !Number.isFinite(balance) || balance <= 0 ||
+    !Number.isFinite(risk) || risk <= 0 || risk > 100 ||
+    !Number.isFinite(stop) || stop <= 0 ||
+    !Number.isFinite(value) || value <= 0
+  ) {
+    result.textContent = "Please enter valid numbers in all fields.";
+    return;
+  }
+
+  const riskAmount = balance * risk / 100;
+  const positionSize = riskAmount / (stop * value);
+
+  result.innerHTML =
+    "<span class='green'>Calculation Complete!</span><br>" +
+    "Account Balance: $" + balance.toFixed(2) + "<br>" +
+    "Risk Amount: $" + riskAmount.toFixed(2) + "<br>" +
+    "Risk Percentage: " + risk + "%<br>" +
+    "Estimated Position Size: " + positionSize.toFixed(4);
+}
+
+function saveAnalysis() {
+
+  const market = document.getElementById("market").value.trim();
+  const timeframe = document.getElementById("timeframe").value;
+  const direction = document.getElementById("direction").value;
+  const notes = document.getElementById("analysisNotes").value.trim();
+
+  if (!market || !notes) {
+    alert("Please enter market and analysis notes.");
+    return;
+  }
+
+  const analysis = { market, timeframe, direction, notes };
+
+  localStorage.setItem("tradewiseAnalysis", JSON.stringify(analysis));
+
+  document.getElementById("analysisResult").textContent =
+    "Analysis saved successfully for " + market + ".";
+}
+
+function saveTrade() {
+
+  const market = document.getElementById("tradeMarket").value.trim();
+  const direction = document.getElementById("tradeDirection").value;
+  const entry = Number(document.getElementById("entry").value);
+  const exit = Number(document.getElementById("exit").value);
+  const notes = document.getElementById("tradeNotes").value.trim();
+
+  if (!market || !Number.isFinite(entry) || entry <= 0 ||
+      !Number.isFinite(exit) || exit <= 0) {
+    alert("Please enter a market and valid entry and exit prices.");
+    return;
+  }
+
+  const trades = JSON.parse(localStorage.getItem("tradewiseTrades") || "[]");
+
+  trades.push({
+    market,
+    direction,
+    entry,
+    exit,
+    notes,
+    date: new Date().toLocaleDateString()
+  });
+
+  localStorage.setItem("tradewiseTrades", JSON.stringify(trades));
+
+  document.getElementById("tradeMarket").value = "";
+  document.getElementById("entry").value = "";
+  document.getElementById("exit").value = "";
+  document.getElementById("tradeNotes").value = "";
+
+  displayTrades();
+
+}
+
+function displayTrades() {
+
+  const trades = JSON.parse(localStorage.getItem("tradewiseTrades") || "[]");
+  const result = document.getElementById("journalResult");
+
+  if (trades.length === 0) {
+    result.textContent = "No trades recorded yet.";
+    return;
+  }
+
+  result.innerHTML = "<span class='green'>Saved Trades</span>";
+
+  trades.forEach((trade, index) => {
+    const item = document.createElement("div");
+    item.className = "trade";
+
+    const heading = document.createElement("strong");
+    heading.textContent = (index + 1) + ". " + trade.market;
+
+    const details = document.createElement("p");
+    details.textContent =
+      trade.direction + " | Entry: " + trade.entry +
+      " | Exit: " + trade.exit +
+      " | Date: " + trade.date;
+
+    const notes = document.createElement("p");
+    notes.textContent = trade.notes;
+
+    item.append(heading, details, notes);
+    result.appendChild(item);
+  });
+}
+
+displayTrades();
+
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+
+<title>TradeWise</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #080d18;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #101827;
+  padding: 22px;
+  border-bottom: 1px solid #263247;
+}
+
+header h1 {
+  color: #36e0a1;
+  margin: 0;
+  font-size: 30px;
+}
+
+header p {
+  color: #9caec5;
+  margin-bottom: 0;
+}
+
+.container {
+  max-width: 750px;
+  margin: auto;
+  padding: 18px;
+}
+
+.card {
+  background: #121c2d;
+  border: 1px solid #26364d;
+  border-radius: 15px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.card h2 {
+  font-size: 19px;
+  margin-top: 0;
+}
+
+.card p {
+  color: #a9b8cc;
+  line-height: 1.6;
+}
+
+.green {
+  color: #36e0a1;
+}
+
+.button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #36e0a1;
+  color: #07130e;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0 15px;
+  border: 1px solid #26364d;
+  border-radius: 8px;
+  background: #080d18;
+  color: white;
+  font-size: 15px;
+}
+
+label {
+  color: #a9b8cc;
+  font-size: 14px;
+}
+
+.result {
+  background: #080d18;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px;
+  background: #101827;
+}
+
+.nav button {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border: 1px solid #26364d;
+  border-radius: 8px;
+  background: #121c2d;
+  color: white;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+.lesson {
+  padding: 12px;
+  background: #080d18;
+  border-radius: 9px;
+  margin: 10px 0;
+}
+
+.trade {
+  border-bottom: 1px solid #26364d;
+  padding: 12px 0;
+}
+
+footer {
+  text-align: center;
+  color: #718096;
+  padding: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>TradeWise</h1>
+  <p>Learn. Analyze. Improve.</p>
+</header>
+
+<nav class="nav">
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('academy')">Academy</button>
+  <button onclick="showSection('analysis')">Analysis</button>
+  <button onclick="showSection('calculator')">Calculator</button>
+  <button onclick="showSection('journal')">Journal</button>
+</nav>
+
+<main class="container">
+
+<!-- HOME -->
+<section id="home" class="section active">
+
+  <div class="card">
+    <h2>Welcome Trader 👋</h2>
+    <p>Your journey to becoming a better trader starts here.</p>
+    <p class="green">Learn trading. Manage risk. Improve your skills.</p>
+  </div>
+
+  <div class="card">
+    <h2>📚 Trading Academy</h2>
+    <p>Build your trading knowledge step by step.</p>
+    <button class="button" onclick="showSection('academy')">
+      Start Learning
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>📊 Market Analysis</h2>
+    <p>Study market structure and price movements.</p>
+    <button class="button" onclick="showSection('analysis')">
+      Explore Analysis
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>🧮 Risk Calculator</h2>
+    <p>Understand your potential risk before a trade.</p>
+    <button class="button" onclick="showSection('calculator')">
+      Open Calculator
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>📝 Trading Journal</h2>
+    <p>Record and review your trading history.</p>
+    <button class="button" onclick="showSection('journal')">
+      Open Journal
+    </button>
+  </div>
+
+</section>
+
+<!-- ACADEMY -->
+<section id="academy" class="section">
+
+  <div class="card">
+    <h2>📚 Trading Academy</h2>
+    <p>Learn important trading concepts.</p>
+
+    <div class="lesson">
+      <h3>1. Market Structure</h3>
+      <p>Understand Higher Highs (HH), Higher Lows (HL), Lower Highs (LH) and Lower Lows (LL).</p>
+    </div>
+
+    <div class="lesson">
+      <h3>2. Break of Structure (BOS)</h3>
+      <p>BOS occurs when price breaks an important previous swing level, potentially showing trend continuation.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>3. Change of Character (CHoCH)</h3>
+      <p>CHoCH is a possible early signal that market structure is changing direction.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>4. Liquidity</h3>
+      <p>Learn about buy-side liquidity and sell-side liquidity around important price levels.</p>
+    </div>
+
+    <div class="lesson">
+      <h3>5. Order Blocks</h3>
+      <p>Study price areas traders use to identify possible institutional activity.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ANALYSIS -->
+<section id="analysis" class="section">
+
+  <div class="card">
+    <h2>📊 Market Analysis</h2>
+    <p>Use this checklist when studying a chart.</p>
+
+    <label>Market / Instrument</label>
+    <input id="market" placeholder="Example: BTCUSDT">
+
+    <label>Timeframe</label>
+    <select id="timeframe">
+      <option>1 Minute</option>
+      <option>5 Minutes</option>
+      <option>15 Minutes</option>
+      <option>1 Hour</option>
+      <option>4 Hours</option>
+      <option>Daily</option>
+    </select>
+
+    <label>Market Direction</label>
+    <select id="direction">
+      <option>Bullish</option>
+      <option>Bearish</option>
+      <option>Sideways</option>
+    </select>
+
+    <label>Analysis Notes</label>
+    <textarea id="analysisNotes" rows="4" placeholder="Write your market observations..."></textarea>
+
+    <button class="button" onclick="saveAnalysis()">
+      Save Analysis
+    </button>
+
+    <div class="result" id="analysisResult">
+      Your analysis will appear here.
+    </div>
+  </div>
+
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator" class="section">
+
+  <div class="card">
+    <h2>🧮 Risk Calculator</h2>
+    <p>Calculate your theoretical risk and position size.</p>
+
+    <label>Account Balance ($)</label>
+    <input type="number" id="balance" placeholder="Example: 100">
+
+    <label>Risk Percentage (%)</label>
+    <input type="number" id="risk" placeholder="Example: 1">
+
+    <label>Stop Loss Distance (Points)</label>
+    <input type="number" id="stop" placeholder="Example: 50">
+
+    <label>Value per Point per Lot ($)</label>
+    <input type="number" id="value" placeholder="Example: 1">
+
+    <button class="button" onclick="calculateRisk()">
+      Calculate Risk
+    </button>
+
+    <div class="result" id="result">
+      Your calculation will appear here.
+    </div>
+  </div>
+
+</section>
+
+<!-- JOURNAL -->
+<section id="journal" class="section">
+
+  <div class="card">
+    <h2>📝 Trading Journal</h2>
+    <p>Record your practice trades and review your decisions.</p>
+
+    <label>Market</label>
+    <input id="tradeMarket" placeholder="Example: BTCUSDT">
+
+    <label>Trade Direction</label>
+    <select id="tradeDirection">
+      <option>Buy</option>
+      <option>Sell</option>
+    </select>
+
+    <label>Entry Price</label>
+    <input type="number" id="entry" placeholder="Entry price">
+
+    <label>Exit Price</label>
+    <input type="number" id="exit" placeholder="Exit price">
+
+    <label>Trade Notes</label>
+    <textarea id="tradeNotes" rows="3" placeholder="Why did you take this trade?"></textarea>
+
+    <button class="button" onclick="saveTrade()">
+      Save Trade
+    </button>
+
+    <div class="result" id="journalResult">
+      No trades recorded yet.
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  TradeWise © 2026
+  <p>Learn. Analyze. Improve.</p>
+</footer>
+
+<script>
+
+function showSection(name) {
+  document.querySelectorAll('.section').forEach(section => {
+    section.classList.remove('active');
+  });
+
+  document.getElementById(name).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function calculateRisk() {
+
+  const balance = Number(document.getElementById("balance").value);
+  const risk = Number(document.getElementById("risk").value);
+  const stop = Number(document.getElementById("stop").value);
+  const value = Number(document.getElementById("value").value);
+
+  const result = document.getElementById("result");
+
+  if (
+    !Number.isFinite(balance) || balance <= 0 ||
+    !Number.isFinite(risk) || risk <= 0 || risk > 100 ||
+    !Number.isFinite(stop) || stop <= 0 ||
+    !Number.isFinite(value) || value <= 0
+  ) {
+    result.textContent = "Please enter valid numbers in all fields.";
+    return;
+  }
+
+  const riskAmount = balance * risk / 100;
+  const positionSize = riskAmount / (stop * value);
+
+  result.innerHTML =
+    "<span class='green'>Calculation Complete!</span><br>" +
+    "Account Balance: $" + balance.toFixed(2) + "<br>" +
+    "Risk Amount: $" + riskAmount.toFixed(2) + "<br>" +
+    "Risk Percentage: " + risk + "%<br>" +
+    "Estimated Position Size: " + positionSize.toFixed(4);
+}
